@@ -47,5 +47,13 @@ class BasePage:
         self.driver.refresh()
 
     def obtener_texto(self,by_locator):
-        pass
+        """Retorna el texto de un elemento, muy útil para mensajes de error"""
+        return self.find(by_locator).text
+    
+    def elemento_visible(self,by_locator):
+        """Verifica si un elemento está en pantalla (para aserciones)"""
+        try:
+            return self.find(by_locator).is_displayed()
+        except:
+            return False
     
