@@ -1,0 +1,15 @@
+[
+    
+   {
+    "escenario":"exitoso",
+    "user":"demo",
+    "password":"demo123",
+    "url":"https://homebanking-demo-tests.netlify.app/"
+   },
+   {
+    "escenario":"invalido",
+    "user":"wrong",
+    "password":"wrong",
+    "url":"https://homebanking-demo-tests.netlify.app/"
+   }
+]
