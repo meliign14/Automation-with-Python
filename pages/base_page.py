@@ -20,7 +20,7 @@ class BasePage:
             WebDriverWait(self.driver, timeout).until(      
                 EC.element_to_be_clickable(by_locator) # Espera a que el elemento sea clickeable
             ) 
-            return self.driver.find_element(by_locator) # Devuelve el elemento
+            return self.driver.find_element(*by_locator) # Devuelve el elemento
         except TimeoutException:
             print("The element was not found") # Si no lo encuentra, muestra este msj
             return None                        # Y devuelve None
@@ -42,8 +42,8 @@ class BasePage:
     def limpiar_sesion(self):
         #Limpia cookies y localStorage para asegurar un test limpio
         self.driver.delete_all_cookies()
-        self.driver.execute_script("window.localStorage.clear();")
-        self.driver.execute_script("window.sessionStorage.clear();")
+        #self.driver.execute_script("window.localStorage.clear();")
+        #self.driver.execute_script("window.sessionStorage.clear();")
         self.driver.refresh()
 
     def obtener_texto(self,by_locator):
