@@ -4,12 +4,14 @@
     "escenario":"exitoso",
     "user":"demo",
     "password":"demo123",
-    "url":"https://homebanking-demo-tests.netlify.app/"
+    "url":"https://homebanking-demo-tests.netlify.app/",
+    "resultado esperado":"Dashboard"
    },
    {
     "escenario":"invalido",
     "user":"wrong",
     "password":"wrong",
-    "url":"https://homebanking-demo-tests.netlify.app/"
+    "url":"https://homebanking-demo-tests.netlify.app/",
+    "resultado esperado":"Error, credenciales inválidas"
    }
 ]

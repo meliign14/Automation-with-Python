@@ -4,6 +4,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from pages.base_page import BasePage
 
 
 
@@ -17,17 +18,24 @@ def get_data_from_json(filename):
     with open(data_path, "r") as file:
         return json.load(file)
 
-
-@pytest.fixture
-
-# En esta clase se inicializa y se cierra el driver
+# En esta funcion se inicializa y se cierra el driver
 # Además configura el chrome
-
+@pytest.fixture(scope="session")
 def driver():
-    # Setup
+    # Setup: se ejecuta una sola vez al inicio
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.implicitly_wait(10)
     driver.maximize_window()
-    yield driver
-    # Teardown
+    yield driver #Aquí corren todos los test
+
+    #Teardown: se ejecuta al final de toda la suite
     driver.quit()
+
+
+@pytest.fixture(autouse=True) #Limpia la sesion antes de cada test automáticamente
+def preparar_test(driver):
+    base_pg = BasePage(driver)
+    base_pg.limpiar_sesion()
+
+
+    

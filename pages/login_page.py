@@ -15,6 +15,7 @@ class LoginPage(BasePage):
 
     # Llamar al metodo para escribir email y contraseña
 
-    def typear(self, by_locator, otro_dato):
-        return super().typear(by_locator, otro_dato)
-    
+    def ingresar_login(self, user, password):
+        self.typear(LoginPageLocators.USERNAME_INPUT,user)
+        self.typear(LoginPageLocators.PASS_INPUT,password)
+        self.clickear(LoginPageLocators.LOGIN_BTN)

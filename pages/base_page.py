@@ -26,34 +26,34 @@ class BasePage:
             return None                        # Y devuelve None
 
     def clickear(self, by_locator):
-        user = self._wait_for_element(by_locator) # Llama a la funcion _wait... y almcena el resultado en la 
+        user = self._esperar_por_elemento(by_locator) # Llama a la funcion _wait... y almcena el resultado en la 
         if user:                         # variable user
             user.click()                 # le hace click
         else:
             raise Exception("No puedo hacerle click")
 
     def typear(self, by_locator, otro_dato):
-        user = self._wait_for_element(by_locator)
+        user = self._esperar_por_elemento(by_locator)
         if user:
             user.send_keys(otro_dato)
         else:
             raise Exception("Can't find the element")
         
     def limpiar_sesion(self):
-        """Limpia cookies y localStorage para asegurar un test limpio"""
+        #Limpia cookies y localStorage para asegurar un test limpio
         self.driver.delete_all_cookies()
         self.driver.execute_script("window.localStorage.clear();")
         self.driver.execute_script("window.sessionStorage.clear();")
         self.driver.refresh()
 
     def obtener_texto(self,by_locator):
-        """Retorna el texto de un elemento, muy útil para mensajes de error"""
-        return self.find(by_locator).text
+        #Retorna el texto de un elemento, muy útil para mensajes de error
+        return self._esperar_por_elemento(by_locator).text
     
     def elemento_visible(self,by_locator):
-        """Verifica si un elemento está en pantalla (para aserciones)"""
+        #Verifica si un elemento está en pantalla (para aserciones)
         try:
-            return self.find(by_locator).is_displayed()
+            return self._esperar_por_elemento(by_locator).is_displayed()
         except:
             return False
     
