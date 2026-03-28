@@ -31,8 +31,8 @@ class TestLogin:
         login_pg.navegar(user_data["url"])
         login_pg.ingresar_login(user_data["user"],user_data["password"])
         if user_data["escenario"] == "exitoso":
-            assert login_pg.elemento_visible(LoginPageLocators.DASHBOARD_SECTION), \
-                "No se muestra el elemento dashboard luego del login"
+            assert login_pg.elemento_visible(LoginPageLocators.LOGOUT_BTN), \
+                "No se muestra el boton salir luego del login"
             
         else:
             assert login_pg.elemento_visible(LoginPageLocators.ERROR_MESSAGE), \
