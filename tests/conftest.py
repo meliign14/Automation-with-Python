@@ -4,6 +4,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options 
 from pages.base_page import BasePage
 
 
@@ -22,10 +23,21 @@ def get_data_from_json(filename):
 # Además configura el chrome
 @pytest.fixture(scope="session")
 def driver():
+    # Configurar las opciones de Chrome
+    chrome_options = Options()
+    # Detectar si estamos en GitHub Actions (CI)
+    # GitHub siempre define esta variable de entorno como 'true'
+    if os.getenv('GITHUB_ACTIONS')== 'true':
+        chrome_options.add_argument("--headless") # No abre ventana
+        chrome_options.add_argument("--no-sandbox") # Necesario para entornos Linux/Docker
+        chrome_options.add_argument("--disable-dev-shm-usage") # Evita problemas de memoria
+        chrome_options.add_argument("--window-size=1920,1080") # Simula un monitor
+
     # Setup: se ejecuta una sola vez al inicio
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
     driver.implicitly_wait(10)
-    driver.maximize_window()
+    if os.getenv('GITHUB_ACTIONS')!= 'true':
+        driver.maximize_window()
     yield driver #Aquí corren todos los test
 
     #Teardown: se ejecuta al final de toda la suite

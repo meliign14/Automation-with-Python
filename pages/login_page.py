@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 from locators.locators_login import LoginPageLocators
+from pages.dashboard_page import DashboardPage
 
 
 class LoginPage(BasePage):
@@ -19,3 +20,5 @@ class LoginPage(BasePage):
         self.typear(LoginPageLocators.USERNAME_INPUT,user)
         self.typear(LoginPageLocators.PASS_INPUT,password)
         self.clickear(LoginPageLocators.LOGIN_BTN)
+
+        return DashboardPage(self.driver)
