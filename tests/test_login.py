@@ -37,6 +37,24 @@ class TestLogin:
         else:
             assert login_pg.elemento_visible(LoginPageLocators.ERROR_MESSAGE), \
                 "No se muestra el mensaje de login erroneo"
+    def test_login_bloqueado(self, driver):
+        login_pg = LoginPage(driver)
+
+        # CP-AUTH- 03
+
+        # Buscamos el escenario de error manualmente en la lista
+
+        datos = get_data_from_json("data_login.json")
+        block_user = datos[2]
+        login_pg.navegar(block_user["url"])
+        
+        for i in range(3):
+            
+            login_pg.ingresar_login(block_user["user"],block_user["password"])
+
+        assert login_pg.obtener_texto(LoginPageLocators.ERROR_MESSAGE) == block_user["resultado esperado"], \
+            "No se muestra el mensaje de login erroneo"
+
 
         
 

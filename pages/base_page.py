@@ -26,7 +26,7 @@ class BasePage:
             return None                        # Y devuelve None
 
     def clickear(self, by_locator):
-        user = self._esperar_por_elemento(by_locator) # Llama a la funcion _wait... y almcena el resultado en la 
+        user = self._esperar_por_elemento(by_locator) # Llama a la funcion _wait... y almacena el resultado en la 
         if user:                         # variable user
             user.click()                 # le hace click
         else:
@@ -35,6 +35,7 @@ class BasePage:
     def typear(self, by_locator, otro_dato):
         user = self._esperar_por_elemento(by_locator)
         if user:
+            user.clear() # Limpia el campo antes de escribir
             user.send_keys(otro_dato)
         else:
             raise Exception("Can't find the element")
@@ -42,8 +43,6 @@ class BasePage:
     def limpiar_sesion(self):
         #Limpia cookies y localStorage para asegurar un test limpio
         self.driver.delete_all_cookies()
-        #self.driver.execute_script("window.localStorage.clear();")
-        #self.driver.execute_script("window.sessionStorage.clear();")
         self.driver.refresh()
 
     def obtener_texto(self,by_locator):

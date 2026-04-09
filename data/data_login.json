@@ -13,5 +13,13 @@
     "password":"wrong",
     "url":"https://homebanking-demo-tests.netlify.app/",
     "resultado esperado":"Error, credenciales inválidas"
+   },
+   {
+    "escenario":"bloqueo",
+    "user":"demo",
+    "password":"wrong",
+    "url":"https://homebanking-demo-tests.netlify.app/",
+    "resultado esperado":"Demasiados intentos fallidos. Tu cuenta ha sido bloqueada."
    }
+
 ]
