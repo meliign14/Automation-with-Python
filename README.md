@@ -7,3 +7,11 @@ Scalable Web Automation Framework built with Python. Features: Pytest fixtures, 
 *   **Automation Tool:** Selenium WebDriver 4.40.0
 *   **Driver Management:** Webdriver Manager (Chrome) 4.0.2
 *   **CI/CD Ready:** Headless mode configured for GitHub Actions
+*   **Reports:** Pytest html 4.2.0
+## 🏗️ Architecture (Page Object Model)
+The project is structured as follows:
+- `pages/`: Page classes (BasePage, LoginPage, etc.) containing interaction logic.
+- `locators/`: Centralized selectors (By.ID, By.XPATH) for easy maintenance.
+- `tests/`: Test cases organized by feature.
+- `data/`: JSON files for test data driven testing (Parameterized tests).
+- `conftest.py`: Global fixtures, driver setup, and session management.
