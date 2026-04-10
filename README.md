@@ -29,3 +29,28 @@ python -m venv venv
 venv\Scripts\activate
 ### Linux/Mac:
 source venv/bin/activate
+```
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+##🛠️ Running Tests
+Run all tests:
+```bash:
+pytest
+```
+Run specific login tests with detailed output (to see console logs):
+```bash
+pytest tests/test_login.py -v -s
+```
+
+
+
+
+
+
+
+
+
+
+
