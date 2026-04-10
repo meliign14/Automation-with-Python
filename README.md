@@ -1,4 +1,5 @@
 # Automation-with-Python
+# 🏦 Homebanking framework
 Scalable Web Automation Framework built with Python. Features: Pytest fixtures, Selenium WebDriver, Page Object Model, and custom HTML reports.
 ## 🚀 Tech Stack
 *   **Language:** Python 3.14.0
