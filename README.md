@@ -15,3 +15,9 @@ The project is structured as follows:
 - `tests/`: Test cases organized by feature.
 - `data/`: JSON files for test data driven testing (Parameterized tests).
 - `conftest.py`: Global fixtures, driver setup, and session management.
+## 📦 Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com
+   cd your-repo
