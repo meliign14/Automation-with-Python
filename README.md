@@ -23,6 +23,7 @@ The project is structured as follows:
    git clone https://github.com
    cd your-repo
 2. Create and activate a virtual enviroment:
+```bash
 python -m venv venv
 ### Windows:
 venv\Scripts\activate
