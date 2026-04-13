@@ -5,7 +5,7 @@
     "user":"demo",
     "password":"demo123",
     "url":"https://homebanking-demo-tests.netlify.app/",
-    "resultado esperado":"Dashboard"
+    "resultado esperado":"Inicio de sesion exitoso"
    },
    {
     "escenario":"invalido",

@@ -22,3 +22,15 @@ class LoginPage(BasePage):
         self.clickear(LoginPageLocators.LOGIN_BTN)
 
         return DashboardPage(self.driver)
+
+    def login_exitoso(self):
+        """Valida que el login fue exitoso"""
+        return self.elemento_visible(LoginPageLocators.LOGOUT_BTN)
+
+    def mostrar_error_login(self):
+        """Valida que se muestra error de login"""
+        return self.elemento_visible(LoginPageLocators.ERROR_MESSAGE)
+
+    def obtener_mensaje_error(self):
+        """Obtiene el mensaje de error"""
+        return self.obtener_texto(LoginPageLocators.ERROR_MESSAGE)

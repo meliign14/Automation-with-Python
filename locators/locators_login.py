@@ -16,5 +16,6 @@ class LoginPageLocators:
 
     DASHBOARD_SECTION = (By.ID,"dashboard-section")
 
+    SUCCESS_LOGIN = (By.CLASS_NAME,"toast-message")
     BTN_YES = (By.CLASS_NAME,"btn btn-primary")
     SESSION_CLOSE = (By.CLASS_NAME,"toast info")
