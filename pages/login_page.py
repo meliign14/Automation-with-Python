@@ -1,6 +1,5 @@
 from pages.base_page import BasePage
 from locators.locators_login import LoginPageLocators
-from pages.dashboard_page import DashboardPage
 
 
 class LoginPage(BasePage):
@@ -14,18 +13,18 @@ class LoginPage(BasePage):
     def navegar(self, url):
         return super().navegar(url)
 
-    # Llamar al metodo para escribir email y contraseña
 
     def ingresar_login(self, user, password):
+        """Completa el formulario de login y hace click en el boton de ingresar"""
         self.typear(LoginPageLocators.USERNAME_INPUT,user)
         self.typear(LoginPageLocators.PASS_INPUT,password)
         self.clickear(LoginPageLocators.LOGIN_BTN)
 
+
+        from pages.dashboard_page import DashboardPage
         return DashboardPage(self.driver)
 
-    def login_exitoso(self):
-        """Valida que el login fue exitoso"""
-        return self.elemento_visible(LoginPageLocators.LOGOUT_BTN)
+    
 
     def mostrar_error_login(self):
         """Valida que se muestra error de login"""
@@ -34,3 +33,7 @@ class LoginPage(BasePage):
     def obtener_mensaje_error(self):
         """Obtiene el mensaje de error"""
         return self.obtener_texto(LoginPageLocators.ERROR_MESSAGE)
+    
+    def logout_exitoso(self):
+        """Valida que el logout fue exitoso"""
+        return self.elemento_visible(LoginPageLocators.LOGIN_BTN)

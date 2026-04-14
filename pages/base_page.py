@@ -1,3 +1,5 @@
+from socket import timeout
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -45,14 +47,25 @@ class BasePage:
         self.driver.delete_all_cookies()
         self.driver.refresh()
 
-    def obtener_texto(self,by_locator):
+    def obtener_texto(self, by_locator):
         #Retorna el texto de un elemento, muy útil para mensajes de error
         return self._esperar_por_elemento(by_locator).text
     
-    def elemento_visible(self,by_locator):
+    def elemento_visible(self, by_locator):
         #Verifica si un elemento está en pantalla (para aserciones)
         try:
             return self._esperar_por_elemento(by_locator).is_displayed()
         except:
             return False
+        
+    def esperar_a_que_desaparezca(self, by_locator, timeout=10):
+
+        try:
+            #Verifica que un elemento no esté en pantalla (para aserciones)
+            return WebDriverWait(self.driver, timeout).until(
+                EC.invisibility_of_element_located(by_locator)
+            )
+        
+        except TimeoutException:
+            print("El elemento es visible despues del timeout")
     

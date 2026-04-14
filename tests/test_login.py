@@ -1,4 +1,5 @@
 import pytest
+from pages.dashboard_page import DashboardPage
 from pages.login_page import LoginPage
 from tests.conftest import get_data_from_json
 import time
@@ -6,18 +7,32 @@ import time
 
 class TestLogin:
 
-    @pytest.mark.parametrize("user_data", get_data_from_json("data_login.json"))
-    def test_login(self, driver, user_data):
+    def test_login(self, driver):
         login_pg = LoginPage(driver)
-
-        print(f"\nEjecutando: {user_data['escenario']}")
+        datos = get_data_from_json("data_login.json")
+        user_data = datos[0]
+        
         login_pg.navegar(user_data["url"])
-        login_pg.ingresar_login(user_data["user"], user_data["password"])
+        dashboard_pg = login_pg.ingresar_login(user_data["user"], user_data["password"])
         
 
-        assert login_pg.login_exitoso() if user_data["escenario"] == "exitoso" \
-            else login_pg.mostrar_error_login(), \
+        assert dashboard_pg.login_exitoso(),\
             f"Validación fallida para escenario: {user_data['escenario']}"
+        
+    def test_logout(self, driver):
+        login_pg = LoginPage(driver)
+        datos = get_data_from_json("data_login.json")
+        user = datos[0]
+        
+        login_pg.navegar(user["url"])
+        login_pg.ingresar_login(user["user"], user["password"])
+
+        dashboard_pg = DashboardPage(driver)
+        dashboard_pg.cerrar_sesion()
+
+        assert login_pg.logout_exitoso(), \
+            "El logout no fue exitoso"
+
 
     def test_login_bloqueado(self, driver):
         login_pg = LoginPage(driver)

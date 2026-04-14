@@ -12,9 +12,8 @@ class LoginPageLocators:
     REMINDME_BOX = (By.ID, "remember-me")
 
     ERROR_MESSAGE = (By.ID,"login-error")
-    LOGOUT_BTN = (By.ID,"logout-btn")
 
-    DASHBOARD_SECTION = (By.ID,"dashboard-section")
+    
 
     SUCCESS_LOGIN = (By.CLASS_NAME,"toast-message")
     BTN_YES = (By.CLASS_NAME,"btn btn-primary")
