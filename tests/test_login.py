@@ -55,7 +55,11 @@ class TestLogin:
         
         login_pg.navegar(user["url"])
 
+
+        assert login_pg.panel_flotante() == True, \
+            "El panel flotante de documentación no está presente en la página de login"
         assert login_pg.boton_con_hover(), \
             "El botón no tiene efecto hover"
-        
+        assert login_pg.links_abren_en_otra_pestania(), \
+            "Los links no abren en otra pestaña"
     

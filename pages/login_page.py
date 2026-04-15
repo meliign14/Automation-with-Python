@@ -38,7 +38,7 @@ class LoginPage(BasePage):
         return self.elemento_visible(LoginPageLocators.LOGIN_BTN)
     
     def panel_flotante(self):
-        """Valida que el panel flotante de documentación no esté presente en la página de login"""
+        """Valida que el panel flotante de documentación esté presente en la página de login"""
         return self.elemento_visible(LoginPageLocators.PANEL_FLOTANTE)
 
     def boton_con_hover(self):
