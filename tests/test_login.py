@@ -32,6 +32,7 @@ class TestLogin:
 
         assert login_pg.logout_exitoso(), \
             "El logout no fue exitoso"
+        
 
 
     def test_login_bloqueado(self, driver):
@@ -46,3 +47,15 @@ class TestLogin:
 
         assert login_pg.obtener_mensaje_error() == block_user["resultado esperado"], \
             "Mensaje de error bloqueado no coincide"
+
+    def test_pagina_login(self, driver):
+        login_pg = LoginPage(driver)
+        datos = get_data_from_json("data_login.json")
+        user = datos[0]
+        
+        login_pg.navegar(user["url"])
+
+        assert login_pg.boton_con_hover(), \
+            "El botón no tiene efecto hover"
+        
+    

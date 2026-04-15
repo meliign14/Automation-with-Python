@@ -18,3 +18,7 @@ class LoginPageLocators:
     SUCCESS_LOGIN = (By.CLASS_NAME,"toast-message")
     BTN_YES = (By.CLASS_NAME,"btn btn-primary")
     SESSION_CLOSE = (By.CLASS_NAME,"toast info")
+
+    PANEL_FLOTANTE = (By.CLASS_NAME, "docs-floating-panel")
+
+    BTN_HOVER = (By.CSS_SELECTOR, ".btn-doc")
