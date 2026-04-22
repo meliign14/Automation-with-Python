@@ -43,9 +43,9 @@ class LoginPage(BasePage):
 
     def boton_con_hover(self):
         """Valida que los elementos del papel tengan el efecto hover"""
-        if not self.elemento_visible(LoginPageLocators.BTN_HOVER):
+        if not self.elemento_visible(LoginPageLocators.BTN1_HOVER):
             return False
-        boton = self.driver.find_element(*LoginPageLocators.BTN_HOVER)
+        boton = self.driver.find_element(*LoginPageLocators.BTN1_HOVER)
         # Obtener propiedades iniciales
         color_inicial = boton.value_of_css_property("background-color")
 
@@ -53,10 +53,23 @@ class LoginPage(BasePage):
         actions = ActionChains(self.driver)
         actions.move_to_element(boton).perform()
 
+        # Un pequeño delay para asegurar que el efecto hover se aplique
+
+        import time
+        time.sleep(0.5)
+        
         # Obtener propiedades despues del hover
-        color_hover = boton.value_of_css_property("border")
+        color_hover = boton.value_of_css_property("background-color")
         return color_inicial != color_hover
         
+    def verificar_pestanias(self):
+        return self.click_y_cambiar_a_nueva_pestania(LoginPageLocators.BTN1_HOVER)
 
-    def links_abren_en_otra_pestania(self):
-        """Valida que los links de la página de login abran en otra pestaña"""
+
+
+
+
+        
+
+        
+        

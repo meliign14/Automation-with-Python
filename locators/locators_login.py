@@ -13,12 +13,11 @@ class LoginPageLocators:
 
     ERROR_MESSAGE = (By.ID,"login-error")
 
-    
-
     SUCCESS_LOGIN = (By.CLASS_NAME,"toast-message")
     BTN_YES = (By.CLASS_NAME,"btn btn-primary")
     SESSION_CLOSE = (By.CLASS_NAME,"toast info")
 
     PANEL_FLOTANTE = (By.CLASS_NAME, "docs-floating-panel")
 
-    BTN_HOVER = (By.CSS_SELECTOR, ".btn-doc")
+    BTN1_HOVER = (By.CSS_SELECTOR, "div > a:nth-of-type(1)")
+    BTN2_HOVER = (By.CSS_SELECTOR, "div > a:nth-of-type(2)")

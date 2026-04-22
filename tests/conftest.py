@@ -18,6 +18,20 @@ def get_data_from_json(filename):
     
     with open(data_path, "r") as file:
         return json.load(file)
+    
+
+@pytest.fixture
+def login_data():
+    """Fixture que carga los datos del JSON una sola vez"""
+    return get_data_from_json("data_login.json")
+
+
+@pytest.fixture
+def login_pg(driver):
+    """Fixture que instancia el LoginPage y te lo entrega listo"""
+    from pages.login_page import LoginPage
+    return LoginPage(driver)
+
 
 # En esta funcion se inicializa y se cierra el driver
 # Además configura el chrome
@@ -40,7 +54,7 @@ def driver():
         driver.maximize_window()
     yield driver #Aquí corren todos los test
 
-    #Teardown: se ejecuta al final de toda la suite
+    # Teardown: se ejecuta al final de toda la suite
     driver.quit()
 
 
@@ -48,6 +62,3 @@ def driver():
 def preparar_test(driver):
     base_pg = BasePage(driver)
     base_pg.limpiar_sesion()
-
-
-    
