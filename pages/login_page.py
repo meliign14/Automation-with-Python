@@ -16,7 +16,7 @@ class LoginPage(BasePage):
 
 
     def ingresar_login(self, user, password):
-        """Completa el formulario de login y hace click en el boton de ingresar"""
+        """Hace el login exitoso y devuelve el objeto DashboardPage instanciado"""
         self.typear(LoginPageLocators.USERNAME_INPUT,user)
         self.typear(LoginPageLocators.PASS_INPUT,password)
         self.clickear(LoginPageLocators.LOGIN_BTN)

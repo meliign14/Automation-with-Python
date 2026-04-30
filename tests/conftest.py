@@ -25,18 +25,26 @@ def login_data():
     """Fixture que carga los datos del JSON una sola vez"""
     return get_data_from_json("data_login.json")
 
-
 @pytest.fixture
 def login_pg(driver):
     """Fixture que instancia el LoginPage y te lo entrega listo"""
     from pages.login_page import LoginPage
     return LoginPage(driver)
 
+@pytest.fixture
+def logged_in_dashboard(driver, login_pg, login_data):
+    """Realiza el login exitoso"""
 
-# En esta funcion se inicializa y se cierra el driver
-# Además configura el chrome
+    data = next(d for d in login_data if d["escenario"] == "exitoso")
+
+    driver.get(data["url"])
+
+    return login_pg.ingresar_login(data["user"], data["password"])
+
+
 @pytest.fixture(scope="session")
 def driver():
+    """ Fixture que inicializa el driver de Chrome una sola vez por sesion de prueba"""
     # Configurar las opciones de Chrome
     chrome_options = Options()
     # Detectar si estamos en GitHub Actions (CI)

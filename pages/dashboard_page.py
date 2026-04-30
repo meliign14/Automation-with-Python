@@ -22,3 +22,12 @@ class DashboardPage(BasePage):
         from pages.login_page import LoginPage
 
         return LoginPage(self.driver)
+    
+    def verifico_cta_corriente(self):
+        return self.elemento_visible(DashboardLocators.CTA_CORRIENTE)
+
+    def verifico_caja_ahorro(self):
+        return self.elemento_visible(DashboardLocators.CAJA_AHORRO)
+
+    def verifico_tarjeta_credito(self):
+        return self.elemento_visible(DashboardLocators.TARJETA_CREDITO)

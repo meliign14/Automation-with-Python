@@ -29,8 +29,8 @@ class BasePage:
             return None                        # Y devuelve None
 
     def clickear(self, by_locator):
-        user = self._esperar_por_elemento(by_locator) # Llama a la funcion _wait... y almacena el resultado en la 
-        if user:                         # variable user
+        user = self._esperar_por_elemento(by_locator) # Llama a la funcion _wait... y almacena el resultado en la variable user
+        if user:                         
             user.click()                 # le hace click
         else:
             raise Exception("No puedo hacerle click")
